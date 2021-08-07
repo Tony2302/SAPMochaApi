@@ -8,7 +8,7 @@ namespace SAPMochaApi.Models
 {
     public class Usuarios
     {
-        //holi
+        
 
         [Key]
         public int IdUsuarios { get; set; }
