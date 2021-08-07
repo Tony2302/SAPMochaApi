@@ -9,7 +9,7 @@ namespace SAPMochaApi.Models
     public class Usuarios
     {
         
-
+//CAMBIO
         [Key]
         public int IdUsuarios { get; set; }
         public string Cedula { get; set; }
