@@ -8,6 +8,8 @@ namespace SapMochaApi.Models
 {
     public class Categorias
     {
+        
+        //HOLA
         [Key]
         public int IdCategorias { get; set; }
         public string Nombre { get; set; }
