@@ -8,6 +8,7 @@ namespace SapMochaApi.Models
 {
     public class Categorias
     {
+        //segundoComentario
         [Key]
         public int IdCategorias { get; set; }
         public string Nombre { get; set; }
