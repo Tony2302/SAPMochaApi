@@ -15,7 +15,9 @@ namespace SapMochaApi.Models
         
         public String Unidad { get; set; }
         public string Descripcion { get; set; }
-        public string Talla { get; set; }
+
+        public string Entrega { get; set; }
+        public string Talla { get; set; }   
 
 
         public int IdCategorias { get; set; }
