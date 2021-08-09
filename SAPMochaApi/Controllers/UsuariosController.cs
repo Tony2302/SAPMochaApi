@@ -334,5 +334,38 @@ namespace SapMochaApi.Controllers
 
         }
 
+
+        [HttpGet]
+        [Route("buscador")]
+        public object buscador(string busqueda)
+        {
+
+            try
+            {
+
+                if(busqueda==null)
+                {
+                    return  _context.Usuarios;
+                }else
+                {
+
+                    var admin = _context.Usuarios.Where(x => x.Cedula.Contains(busqueda) || x.Nombres.Contains(busqueda) || x.Apellidos.Contains(busqueda) || x.Usuario.Contains(busqueda) || x.Correo.Contains(busqueda));
+                    return admin;
+
+                }
+
+             
+             }
+            catch (Exception e)
+            {
+
+                return e;
+            }   
+            
+
+           
+
+        }
+
     }
 }

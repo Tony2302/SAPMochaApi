@@ -25,7 +25,7 @@ namespace SapMochaApi.Controllers
         [HttpGet]
         public IEnumerable<DetalleCategorias> GetDetalleCategorias()
         {
-            return _context.DetalleCategorias.Include(x=>x.Productos).Include(x=>x.Productores).Include(x=>x.Productos.categorias).Include(x=>x.Productos.categorias.tipoproductores);
+            return _context.DetalleCategorias.Include(x => x.Productos).Include(x => x.Productores).Include(x => x.Productos.categorias).Include(x => x.Productos.categorias.tipoproductores);
         }
 
         // GET: api/DetalleCategorias/5
@@ -37,7 +37,7 @@ namespace SapMochaApi.Controllers
                 return BadRequest(ModelState);
             }
 
-            var detalleCategorias = await _context.DetalleCategorias.Include(x=>x.Productos).Include(x=>x.Productores).FirstAsync(x=>x.IdDetalleCategorias==id);
+            var detalleCategorias = await _context.DetalleCategorias.Include(x => x.Productos).Include(x => x.Productores).FirstAsync(x => x.IdDetalleCategorias == id);
 
             if (detalleCategorias == null)
             {
@@ -121,6 +121,40 @@ namespace SapMochaApi.Controllers
         private bool DetalleCategoriasExists(int id)
         {
             return _context.DetalleCategorias.Any(e => e.IdDetalleCategorias == id);
+        }
+
+
+
+        [HttpGet]
+        [Route("buscador")]
+        public object buscador(string busqueda)
+        {
+
+            try
+            {
+
+                if (busqueda == null)
+                {
+                    return _context.DetalleCategorias.Include(x=>x.Productos).Include(x=>x.Productores);
+                }
+                else
+                {
+
+                    var admin = _context.DetalleCategorias.Include(x => x.Productores).Include(x=>x.Productos).Where(x => (x.Productores.Nombres +" "+x.Productores.Apellidos) .Contains(busqueda)  || x.Productores.Apellidos.Contains(busqueda) || x.Productos.NombreProducto.Contains(busqueda));
+                    return admin;
+
+                }
+
+
+            }
+            catch (Exception e)
+            {
+
+                return e;
+            }
+
+
+
         }
     }
 }

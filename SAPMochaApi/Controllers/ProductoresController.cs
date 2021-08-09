@@ -122,5 +122,39 @@ namespace SapMochaApi.Controllers
         {
             return _context.Productores.Any(e => e.IdProductores == id);
         }
+
+
+        [HttpGet]
+        [Route("buscador")]
+        public object buscador(string busqueda)
+        {
+
+            try
+            {
+
+                if (busqueda == null)
+                {
+                    return _context.Productores;
+                }
+                else
+                {
+
+                    var admin = _context.Productores.Where(x => x.Cedula.Contains(busqueda) || x.Nombres.Contains(busqueda) || x.Direccion.Contains(busqueda) || x.Telefono.Contains(busqueda) || x.Correo.Contains(busqueda));
+                    return admin;
+
+                }
+
+
+            }
+            catch (Exception e)
+            {
+
+                return e;
+            }
+
+
+
+
+        }
     }
 }
