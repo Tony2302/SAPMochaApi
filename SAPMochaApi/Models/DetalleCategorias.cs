@@ -12,18 +12,13 @@ namespace SapMochaApi.Models
 
         [Key]
         public int IdDetalleCategorias { get; set; }
-
         public int IdProductos { get; set; }
         public Productos Productos { get; set; }
-
         public int Stock { get; set; }
-
+        public int Entrega { get; set; }
         [Column(TypeName = "decimal(8,2)")]
         public Decimal PrecioUnidad { get; set; }
         [Column(TypeName = "decimal(8,2)")]
-        public Decimal PrecioDocena { get; set; }
-
-
         public int IdProductores { get; set; }
         public Productores Productores { get; set; }
 

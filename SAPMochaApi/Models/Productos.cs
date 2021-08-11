@@ -12,14 +12,9 @@ namespace SapMochaApi.Models
         [Key]
         public int IdProductos { get; set; }
         public string NombreProducto { get; set; }
-        
         public String Unidad { get; set; }
         public string Descripcion { get; set; }
-
-        public string Entrega { get; set; }
         public string Talla { get; set; }   
-
-
         public int IdCategorias { get; set; }
         public Categorias categorias { get; set; }
 
